@@ -1,0 +1,34 @@
+{
+  "name": "curso-node-pluralsight",
+  "version": "1.0.0",
+  "description": "Repository for \"Building Web Applications with Node.js and Express 4.0\" course on Pluralsight",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "[Environment]::SetEnvironmentVariable(\"DEBUG\",\"*\"); & node app.js",
+    "lint": "eslint app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/npadula/curso-node-pluralsight.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/npadula/curso-node-pluralsight/issues"
+  },
+  "homepage": "https://github.com/npadula/curso-node-pluralsight#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "chalk": "^2.4.1",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
