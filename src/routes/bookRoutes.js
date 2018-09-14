@@ -1,42 +1,18 @@
 const express = require("express");
 const bookRouter = express.Router();
-const sql = require("mssql/msnodesqlv8");
-const config = require("../../sqlConfig");
-const chalk = require("chalk");
 
+const chalk = require("chalk");
+const bookController = require("../controllers/bookController");
+
+
+const {getIndex,getById,middleware} = bookController();
 
 function router(opts){
-    bookRouter.route("/")
-    .get((req,res) => {
+    bookRouter.use(middleware)
 
-            (async function (){
-                const request = new sql.Request();
-                const result = await request.query("SELECT * FROM Books");
-    
-                res.send(result.recordset);
-            })();
 
-    });
-
-bookRouter.route("/:id")
-.all((req,res,next) => {
-    const {id} = req.params;
-
-    (async function (){
-        const request = new sql.Request();
-        const result = await request
-        .input("id",sql.Int,id)
-        .query("SELECT * FROM Books WHERE Id = @id");
-        
-        [req.book] = result.recordset;
-
-        next();
-    })();
-})
-.get((req,res) => {
-    
-    res.send(req.book);
-});
+bookRouter.route("/").get(getIndex);
+bookRouter.route("/:id").get(getById);
 
 
 
